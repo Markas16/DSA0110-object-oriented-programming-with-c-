@@ -1,0 +1,9 @@
+﻿Fare Rs 10.00 balance Rs 90
+Fare Rs 36.00 balance Rs 54
+Denied (low balance) balance Rs 54
+
+--- Boundary Tests for Exact Boundary Hours ---
+[Test 10:00 AM Boundary (Off-Peak expected)]: Outer Fare @ 10:00 = 3000 paise (Rs 30.00) -> PASS (Off-peak Rs 30.00)
+[Test 20:00 PM Boundary (Off-Peak expected)]: Outer Fare @ 20:00 = 3000 paise (Rs 30.00) -> PASS (Off-peak Rs 30.00)
+[Test 08:00 AM Boundary (Peak expected)]:     Outer Fare @ 08:00 = 3600 paise (Rs 36.00) -> PASS (Peak Rs 36.00)
+[Test 17:00 PM Boundary (Peak expected)]:     Outer Fare @ 17:00 = 3600 paise (Rs 36.00) -> PASS (Peak Rs 36.00)

@@ -1,0 +1,39 @@
+﻿========================================================
+  TASK 2: TOKENS, CONSTANTS, ENUMS & MACRO ANALYSIS
+========================================================
+
+[1] C++ Token Classification in Metro Fare System:
+  - Keywords:    class, constexpr, enum, explicit, switch, return, namespace
+  - Identifiers: SmartCard, deductFare, balancePaise, BASE_FARE_INNER_PAISE
+  - Constants:   1000LL, 5000LL, 20, 'C', "Inner"
+  - Operators:   +, -, *, /, %, >=, <=, &&, ||, ==, =
+  - Punctuators: ;, {, }, (, ), <, >, ::, ,
+
+[2] Comparison: #define vs const vs constexpr:
+  +----------------+---------------------+-------------------+-------------------+
+  | Property       | #define MACRO       | const             | constexpr         |
+  +----------------+---------------------+-------------------+-------------------+
+  | Evaluation     | Preprocessor text   | Run/Compile-time  | Guaranteed Compile|
+  | Type Safety    | NONE (text replace) | Strong type check | Strong type check |
+  | Scope          | Global (leaks out)  | Block / Namespace | Block / Namespace |
+  | Debug Symbols  | Missing             | Preserved in DWARF| Preserved in DWARF|
+  | Storage Cost   | Zero (immediate)    | May take memory   | Zero if not odr-us|
+  +----------------+---------------------+-------------------+-------------------+
+
+[3] Unscoped enum vs Scoped enum class:
+  - Legacy enum implicit int conversion: LEGACY_INNER -> 0
+  - Scoped enum class Zone::Inner requires explicit cast: 0
+
+[4] Centralized Type-Safe Constants (in Paise):
+  - Inner Zone Base:   1000 paise (Rs 10)
+  - Middle Zone Base:  2000 paise (Rs 20)
+  - Outer Zone Base:   3000 paise (Rs 30)
+  - Airport Zone Base: 6000 paise (Rs 60)
+  - Minimum Balance:   5000 paise (Rs 50)
+
+[5] Macro Pitfall Analysis:
+  - Sample base fare: 1000
+  - Macro expansion lacks safety and side-effect guarantees.
+  - Modern C++ constexpr functions & inline constexpr variables eliminate macros.
+
+Task 2 executed successfully.

@@ -1,0 +1,33 @@
+﻿========================================================
+  TASK 5: OPERATORS, PRECEDENCE & LOOKUP TABLE ANALYSIS
+========================================================
+
+[1] 24-Hour Peak Classification Comparison:
+Hour | Logical Exp | Table Lookup | Match?
+-----+-------------+--------------+--------
+   8 |        PEAK |         PEAK | YES
+   9 |        PEAK |         PEAK | YES
+  10 |    Off-Peak |     Off-Peak | YES
+  17 |        PEAK |         PEAK | YES
+  19 |        PEAK |         PEAK | YES
+  20 |    Off-Peak |     Off-Peak | YES
+All 24 hours identical: TRUE (VERIFIED)
+
+[2] Complexity and Design Comparison:
+  +----------------------+------------+-------------+----------------------------------+
+  | Approach             | Time Comp. | Space Comp. | Trade-offs                       |
+  +----------------------+------------+-------------+----------------------------------+
+  | Logical Expression   | O(1)       | O(1) 0 extra| Branch-predictor dependent       |
+  | bool peak[24] Table  | O(1)       | O(1) 24 B   | Direct index, branchless, cache  |
+  +----------------------+------------+-------------+----------------------------------+
+
+[3] Prefix vs Postfix Increment Semantics:
+  - Initial: val = 10
+  - After ++val : pre = 11, val = 11
+  - After val++ : post = 11, val = 12
+
+[4] Analysis of 'i = i++' Undefined/Unspecified Behavior:
+  - In C++03, modifying 'i' more than once between sequence points causes UNDEFINED BEHAVIOR.
+  - In C++17 (P0145R3), assignment evaluates right side before left side, but
+    writing 'i = i++' produces conflicting write intents, confusing compilers and human readers.
+  - It must strictly be replaced with simple '++i;' or 'i += 1;'.

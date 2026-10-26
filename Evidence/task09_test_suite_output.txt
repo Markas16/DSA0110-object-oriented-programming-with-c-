@@ -1,0 +1,51 @@
+﻿========================================================
+  TASK 9: AUTOMATED UNIT & INTEGRATION TEST HARNESS
+========================================================
+
+[Group 1] Original Zone Base & Peak Rates:
+  [PASS] Inner Zone Off-Peak = 1000 paise (Rs 10.00)
+  [PASS] Inner Zone Peak (09:00) = 1200 paise (Rs 12.00)
+  [PASS] Middle Zone Off-Peak = 2000 paise (Rs 20.00)
+  [PASS] Middle Zone Peak (18:00) = 2400 paise (Rs 24.00)
+  [PASS] Outer Zone Off-Peak = 3000 paise (Rs 30.00)
+  [PASS] Outer Zone Peak (08:00) = 3600 paise (Rs 36.00)
+
+[Group 2] Temporal Boundary Tests:
+  [PASS] 08:00 is PEAK (Morning start boundary)
+  [PASS] 08:00 Outer fare applies +20% surcharge
+  [PASS] 10:00 is OFF-PEAK (Morning end boundary)
+  [PASS] 10:00 Outer fare is standard base fare
+  [PASS] 17:00 is PEAK (Evening start boundary)
+  [PASS] 17:00 Outer fare applies +20% surcharge
+  [PASS] 20:00 is OFF-PEAK (Evening end boundary)
+  [PASS] 20:00 Outer fare is standard base fare
+
+[Group 3] Minimum Solvency Balance (Rs 50.00 = 5000 paise):
+  [PASS] Trip leaving EXACTLY 5000 paise (Rs 50.00) is PERMITTED
+  [PASS] Remaining balance is exactly 5000 paise
+  [PASS] Trip leaving < 5000 paise is STRICTLY DENIED
+  [PASS] Card balance remained 5000 paise (undeducted)
+  [PASS] Trip leaving 4999 paise (Rs 49.99) is DENIED
+  [PASS] Balance remains 5999 paise
+
+[Group 4] Input Validation & Edge Conditions:
+  [PASS] Unknown Zone returns error code -1
+  [PASS] Hour 24 returns error code -1
+  [PASS] Negative hour returns error code -1
+  [PASS] Negative recharge (-500 paise) is REJECTED
+  [PASS] Zero recharge is REJECTED
+  [PASS] Positive recharge (+2500 paise) is ACCEPTED
+  [PASS] Balance correctly increased to 12500 paise
+
+[Group 5] 5-Journey Sequential Audit Verification:
+  [PASS] Journey 1 (Middle Off-Peak) Approved
+  [PASS] Journey 2 (Outer Peak) Approved
+  [PASS] Journey 3 (Inner Peak) Approved
+  [PASS] Journey 4 (Outer Off-Peak) Approved
+  [PASS] Journey 5 (Middle Off-Peak) Denied (would breach Rs 50 min)
+  [PASS] Total Fare Deducted Matches Manual Calculation (9800 paise = Rs 98.00)
+  [PASS] Final Card Balance Matches Manual Calculation (5200 paise = Rs 52.00)
+
+--------------------------------------------------------
+TEST HARNESS SUMMARY: 34 Passed, 0 Failed
+========================================================

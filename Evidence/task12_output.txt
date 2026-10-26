@@ -1,0 +1,28 @@
+﻿========================================================
+  TASK 12: DAY-4 DESIGN CHALLENGE VALIDATION SUITE
+========================================================
+
+[Test 1] Airport Zone Tariffs (Base = Rs 60.00):
+  - Base Fare (Off-Peak)    : Rs 60 (Expected Rs 60.00) -> PASS
+  - Peak Fare (+20%)        : Rs 72 (Expected Rs 72.00) -> PASS
+  - Weekend Fare (-10%)     : Rs 54 (Expected Rs 54.00) -> PASS
+
+[Test 2] Surcharge & Weekend Discount Exclusivity:
+  - Weekend @ 08:00 (Peak window) Fare: Rs 54 (Expected Rs 54.00, NOT Rs 72 or Rs 64.80) -> PASS (EXCLUSIVITY VERIFIED)
+
+[Test 3] Monthly Pass for [Inner, Airport]:
+Trip 1 (Inner, covered by pass):
+  [Approved] Zone: Inner    | Hour: 9 :00 | Weekday | Fare: Rs 0.00 | Remaining: Rs 100.00 (COVERED BY PASS)
+Trip 2 (Airport, covered by pass):
+  [Approved] Zone: Airport  | Hour: 18:00 | Weekday | Fare: Rs 0.00 | Remaining: Rs 100.00 (COVERED BY PASS)
+Trip 3 (Middle, NOT covered by pass):
+  [Approved] Zone: Middle   | Hour: 14:00 | Weekday | Fare: Rs 20.00 | Remaining: Rs 80.00
+Trip 4 (Outer, Weekend, NOT covered):
+  [Approved] Zone: Outer    | Hour: 11:00 | Weekend | Fare: Rs 27.00 | Remaining: Rs 53.00
+
+[Test 4] Low Balance Invariant on Monthly Pass Journey:
+Attempting travel on depleted card (Rs 30.00) with pass for Airport:
+  [Denied] Insufficient security balance! Current: Rs 30.00, Required >= Rs 50.00.
+  Result: PASS (Correctly Denied by Security Invariant)
+
+Task 12 Day-4 Design Challenge validation completed successfully.

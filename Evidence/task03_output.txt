@@ -1,0 +1,42 @@
+﻿========================================================
+  TASK 3: DATA TYPES, SIZEOF MEASUREMENTS & COMPATIBILITY
+========================================================
+
+[1] System Data Type Selection & Actual Compiler Measurements:
+Domain Quantity       Selected Type   sizeof (bytes)Standard Header     Design Justification
+-----------------------------------------------------------------------------------------------
+Money / Balance       int64_t         8             <cstdint>           Exact integer paise, prevents overflow up to Rs 9.22e16
+Trip Fare             int64_t         8             <cstdint>           Exact integer arithmetic, safe with surcharge operations
+Time (Hour)           int / uint8_t   4             built-in            Range 0..23; fits in 1 byte, standard int avoids promotion
+Metro Zone            Zone (enum)     1             custom enum         Scoped enum class backed by uint8_t; strict type safety
+Peak / Status Flags   bool            1             built-in            Boolean flags (peak, weekend, concession, pass active)
+Journey Counter       uint64_t        8             <cstdint>           Non-negative counter supporting millions of transactions
+
+[2] Relevant Limits from <climits> and <limits>:
+  - int32_t Min / Max : -2147483648 to 2147483647
+  - int64_t Min / Max : -9223372036854775808 to 9223372036854775807
+  - double Digits10   : 15 decimal digits precision
+  - float Digits10    : 6 decimal digits precision
+
+[3] Reproducible Precision Comparison: Floating-Point vs Integer Paise:
+  - Adding Rs 0.10 repeatedly 100,000 times:
+    * Expected Total         : Rs 10000.0000000000
+    * Floating-Point (double): Rs 10000.0000000188 (Error: 0.0000000188)
+    * Integer Paise (int64)  : Rs 10000.0000000000 (Error: 0.0000000000 EXACT)
+
+[4] Integer Overflow Demonstration in Fare Accumulation:
+  - Accumulating 3,000,000 journeys @ 2500 paise:
+    * Expected Total (Mathematical) : 7,500,000,000 paise (Rs 75,000,000.00)
+    * int32_t Accumulator (32-bit)  : -1089934592 paise (OVERFLOW/WRAP-AROUND!)
+    * int64_t Accumulator (64-bit)  : 7500000000 paise (CORRECT & STABLE)
+
+[5] Complexity & Design Trade-off Comparison:
+  +-------------------+------------+-------------+--------------------------------------+
+  | Representation    | Time Comp. | Space Comp. | Precision & Safety                   |
+  +-------------------+------------+-------------+--------------------------------------+
+  | int64_t (paise)   | O(1)       | O(1) 8B     | Exact integer, immune to float drift |
+  | int32_t (paise)   | O(1)       | O(1) 4B     | Overflows at ~2.14 crore paise       |
+  | double (rupees)   | O(1)       | O(1) 8B     | Accumulated rounding error           |
+  +-------------------+------------+-------------+--------------------------------------+
+
+Task 3 executed successfully.

@@ -1,0 +1,14 @@
+﻿========================================================
+  TASK 7: PROCEDURAL METRO FARE DEMONSTRATION
+========================================================
+
+Initial Balance: Rs 100
+
+[Procedural] Success! Zone: Inner, Hour: 12, Fare: Rs 10.00, Remaining Balance: Rs 90.00
+[Procedural] Success! Zone: Outer, Hour: 18, Fare: Rs 36.00, Remaining Balance: Rs 54.00
+[Procedural] Denied! Insufficient balance. Required post-trip >= Rs 50.00, Current: Rs 54.00, Fare: Rs 36.00
+
+[Demonstrating Procedural Vulnerability]:
+Because balancePaise is an unencapsulated variable, any rogue code
+can execute 'balancePaise = 1000;' directly without invariant checks!
+Corrupted balance: Rs 10.00 (below minimum limit!)

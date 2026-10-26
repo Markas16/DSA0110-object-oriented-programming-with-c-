@@ -1,0 +1,31 @@
+﻿========================================================
+  TASK 8: SAFE INPUT / OUTPUT VALIDATION SYSTEM
+========================================================
+
+[1] Testing Alternative: getline() + stoi() + try-catch Validation:
+  Input: "25                  " -> REJECTED (Safe error handling)
+  Input: "-5                  " -> REJECTED (Safe error handling)
+  Input: "abc                 " -> REJECTED (Safe error handling)
+  Input: "18                  " -> VALID (18)
+  Input: "99999999999999999   " -> REJECTED (Safe error handling)
+
+[2] Interactive Robust Input Simulator:
+Enter journey hour (0 - 23):   [Error] Invalid numeric input! Clearing stream...
+Enter journey hour (0 - 23):   [Error] Value must be between 0 and 23.
+Enter journey hour (0 - 23):   [Error] Value must be between 0 and 23.
+Enter journey hour (0 - 23): Accepted Hour: 9
+Enter Zone (Inner, Middle, Outer): Enter recharge amount in paise (positive integer): Accepted Recharge: Rs 50.00
+
+[3] Formatted Journey Report Table with <iomanip>:
++----------+------------+--------+--------------+------------+----------------+
+| Trip ID | Zone      | Hour  | Fare        | Status    | Balance       |
++----------+------------+--------+--------------+------------+----------------+
+| #1      | Inner     | 8     | Rs 12.00    | APPROVED  | Rs 88.00      |
+| #2      | Middle    | 14    | Rs 20.00    | APPROVED  | Rs 68.00      |
+| #3      | Outer     | 18    | Rs 36.00    | DENIED    | Rs 68.00      |
+| #4      | Outer     | 22    | Rs 30.00    | APPROVED  | Rs 38.00      |
++----------+------------+--------+--------------+------------+----------------+
+
+[4] Comparison of Input Methods:
+  - cin >> val : Direct stream extraction, fast O(1), minimal buffer, requires cin.clear() recovery.
+  - getline/stoi: Line-oriented, robust against stray characters, allocates std::string buffer O(N).

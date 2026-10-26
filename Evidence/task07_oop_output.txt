@@ -1,0 +1,20 @@
+﻿========================================================
+  TASK 7: OBJECT-ORIENTED SMARTCARD DEMONSTRATION
+========================================================
+
+Created Card ID: 101 | Initial Balance: Rs 100.00
+
+[OOP] Trip 1 Success: Inner Zone, Fare Rs 10.00 | Remaining: Rs 90.00
+[OOP] Trip 2 Success: Outer Zone (Peak), Fare Rs 36.00 | Remaining: Rs 54.00
+[OOP] Trip 3 DENIED! Balance Rs 54.00 insufficient to maintain Rs 50.00 minimum after fare Rs 36.00
+
+Recharging Card with Rs 50.00 (5000 paise)...
+New Balance: Rs 104.00
+[OOP] Trip 3 Success after recharge: Fare Rs 36.00 | Remaining: Rs 68.00
+
+[Encapsulation & Security Analysis]:
+1. Private member 'balancePaise_' guarantees that invariant (>= Rs 50)
+   CANNOT be bypassed by external components.
+2. If 'balancePaise_' were public, any component could do 'card.balancePaise_ = 0;'
+   or forget to call 'canTravel()', creating financial deficits.
+3. Method 'deduct()' couples validation and state transition atomically.

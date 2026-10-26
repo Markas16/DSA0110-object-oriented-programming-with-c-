@@ -1,0 +1,44 @@
+﻿Welcome to the City Metro Automated Fare Gate System!
+Smart-Card initialized for Register No: 192421250
+Initial Prepaid Balance: Rs 100.00
+
+======================================================
+  CITY METRO SMART-CARD SYSTEM (DSA01 Assignment 1)
+  Student: Markas | Register No: 192421250
+======================================================
+ 1. Check Smart-Card Balance
+ 2. Tap & Travel (Record a Metro Journey)
+ 3. Recharge Smart-Card Balance
+ 4. View Journey Audit Log
+ 5. Exit
+------------------------------------------------------
+Select option [1-5]: 
+>>> Card ID: #192421250
+>>> Current Balance: Rs 100.00 (10000 paise)
+>>> Minimum Required Balance: Rs 50.00
+
+======================================================
+  CITY METRO SMART-CARD SYSTEM (DSA01 Assignment 1)
+  Student: Markas | Register No: 192421250
+======================================================
+ 1. Check Smart-Card Balance
+ 2. Tap & Travel (Record a Metro Journey)
+ 3. Recharge Smart-Card Balance
+ 4. View Journey Audit Log
+ 5. Exit
+------------------------------------------------------
+Select option [1-5]: 
+Enter Destination Zone (Inner, Middle, Outer, Airport): Enter Travel Hour [0 - 23]: Is it weekend travel? (y/n): Calculated Fare: Rs 12.00
+>>> GATES OPEN! Journey approved. Remaining Balance: Rs 88.00
+
+======================================================
+  CITY METRO SMART-CARD SYSTEM (DSA01 Assignment 1)
+  Student: Markas | Register No: 192421250
+======================================================
+ 1. Check Smart-Card Balance
+ 2. Tap & Travel (Record a Metro Journey)
+ 3. Recharge Smart-Card Balance
+ 4. View Journey Audit Log
+ 5. Exit
+------------------------------------------------------
+Select option [1-5]: 
