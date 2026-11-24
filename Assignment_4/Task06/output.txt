@@ -1,0 +1,44 @@
+==================================================================================================
+                       SMART VEHICLE RENTAL FLEET MANAGEMENT SYSTEM                               
+==================================================================================================
+
+[PHASE 1] Initial Fleet Status:
+
+--------------------------------------------------------------------------------------------------
+                                  COMPLETE FLEET INVENTORY                                        
+--------------------------------------------------------------------------------------------------
+Reg: BIKE-101     | Type: Bicycle        | Daily: Rs.  150.00 | Status: AVAILABLE | Eco-Friendly (No Fuel)
+Reg: TN-09-AB-2024| Type: Two-Wheeler    | Daily: Rs.  450.00 | Status: AVAILABLE | Fuel: 100.0% | Next Service: 15/06/2026 | Helmet Included
+Reg: TN-01-XY-5555| Type: Car            | Daily: Rs. 2200.00 | Status: AVAILABLE | Fuel: 100.0% | Next Service: 20/08/2026 | Seats: 7
+Reg: TN-07-EV-9999| Type: Electric Car   | Daily: Rs. 3000.00 | Status: AVAILABLE | Battery: 60 kWh (60.0 kWh left) | Service: 10/12/2026
+Reg: TN-22-BUS-01 | Type: Electric Bus   | Daily: Rs. 8000.00 | Status: AVAILABLE | Capacity: 42 passengers | Pack: 250 kWh [Heavy Commercial EV]
+--------------------------------------------------------------------------------------------------
+
+[PHASE 2] Renting Operations:
+[RENTED] Bicycle [BIKE-101] rented to Rajesh Kumar for 3 days.
+[RENTED] Car [TN-01-XY-5555] rented to Dr. Malathi for 4 days.
+[RENTED] Electric Car [TN-07-EV-9999] rented to Vikram Seth for 2 days.
+[RENTED] Electric Bus [TN-22-BUS-01] rented to SRM Tours & Travels for 5 days.
+
+[Constraint Check] Attempting to rent already booked vehicle:
+[ERROR] Vehicle BIKE-101 is already rented to Rajesh Kumar!
+
+[PHASE 3] Vehicle Return and Billing Calculation:
+[RETURNED] Bicycle [BIKE-101] returned by Rajesh Kumar | Actual Days: 3 | Total Bill: Rs. 450.00
+  -> Late return! 2 overdue days charged at 1.5x daily rate = Rs. 6600.00
+[RETURNED] Car [TN-01-XY-5555] returned by Dr. Malathi | Actual Days: 6 | Total Bill: Rs. 20736.00
+[RETURNED] Electric Car [TN-07-EV-9999] returned by Vikram Seth | Actual Days: 2 | Total Bill: Rs. 6312.50
+  -> Late return! 1 overdue days charged at 1.5x daily rate = Rs. 12000.00
+[RETURNED] Electric Bus [TN-22-BUS-01] returned by SRM Tours & Travels | Actual Days: 6 | Total Bill: Rs. 64050.00
+
+[PHASE 4] Final Fleet Status After Returns:
+
+--------------------------------------------------------------------------------------------------
+                                  COMPLETE FLEET INVENTORY                                        
+--------------------------------------------------------------------------------------------------
+Reg: BIKE-101     | Type: Bicycle        | Daily: Rs.  150.00 | Status: AVAILABLE | Eco-Friendly (No Fuel)
+Reg: TN-09-AB-2024| Type: Two-Wheeler    | Daily: Rs.  450.00 | Status: AVAILABLE | Fuel: 100.0% | Next Service: 15/06/2026 | Helmet Included
+Reg: TN-01-XY-5555| Type: Car            | Daily: Rs. 2200.00 | Status: AVAILABLE | Fuel: 100.0% | Next Service: 20/08/2026 | Seats: 7
+Reg: TN-07-EV-9999| Type: Electric Car   | Daily: Rs. 3000.00 | Status: AVAILABLE | Battery: 60 kWh (60.0 kWh left) | Service: 10/12/2026
+Reg: TN-22-BUS-01 | Type: Electric Bus   | Daily: Rs. 8000.00 | Status: AVAILABLE | Capacity: 42 passengers | Pack: 250 kWh [Heavy Commercial EV]
+--------------------------------------------------------------------------------------------------

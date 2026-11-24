@@ -1,0 +1,40 @@
+===================================================
+1. Output of Repaired Hierarchy (account_repaired.exe)
+===================================================
+=======================================================
+ REPAIRED BANK ACCOUNT SYSTEM - RUNTIME POLYMORPHISM   
+=======================================================
+
+--- Iterating through accounts (Dynamic Dispatch) ---
+Account Interest Rate: 3.5%
+Account Interest Rate: 4%
+
+--- Automatic destruction via RAII (Virtual Destructors) ---
+[Account Destructor] Base account safely destroyed
+[SeniorAccount Destructor] Safely deallocating history array (800 bytes)
+[Account Destructor] Base account safely destroyed
+All accounts destroyed safely without any memory leak!
+
+===================================================
+2. Output of Predict the Output (account_predict.exe)
+===================================================
+3.5 4 3.5
+
+===================================================
+3. Forensics on Buggy Program (account_buggy.exe)
+===================================================
+--- 1. Testing rate() with raw base pointer ---
+Rate: 3.5%
+Rate: 3.5%
+
+--- 2. Deleting through base pointers ---
+[Account Destructor] Destroying base Account
+[Account Destructor] Destroying base Account
+
+--- 3. Testing Object Slicing ---
+[Account Destructor] Destroying base Account
+Copy Rate: 3.5%
+[Account Destructor] Destroying base Account
+
+Notice: [SeniorAccount Destructor] is NEVER called!
+AddressSanitizer detects 800 bytes leaked on heap (see sanitizer_report.txt).

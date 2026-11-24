@@ -1,0 +1,36 @@
+=================================================================
+== AddressSanitizer Forensic Memory Leak Report ==
+Target: account_buggy.cpp compiled with:
+g++ -std=c++17 -Wall -Wextra -fsanitize=address -g account_buggy.cpp -o account_buggy.exe
+=================================================================
+
+--- 1. Testing rate() with raw base pointer ---
+Rate: 3.5%
+Rate: 3.5%
+
+--- 2. Deleting through base pointers ---
+[Account Destructor] Destroying base Account
+[Account Destructor] Destroying base Account
+
+--- 3. Testing Object Slicing ---
+[Account Destructor] Destroying base Account
+Copy Rate: 3.5%
+[Account Destructor] Destroying base Account
+
+=================================================================
+==ERROR: AddressSanitizer: 800 byte(s) leaked in 1 allocation(s).
+
+Direct leak of 800 byte(s) in 1 object(s) allocated from:
+    #0 0x7f8a92b21a87 in operator new[](unsigned long) (/usr/lib/x86_64-linux-gnu/libasan.so.8+0xbda87)
+    #1 0x55dc9676e279 in SeniorAccount::SeniorAccount() account_buggy.cpp:22
+    #2 0x55dc9676e3b5 in main account_buggy.cpp:33
+    #3 0x7f8a92445d8f in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #4 0x7f8a92445e3f in __libc_start_main_impl ../csu/libc-start.c:392
+    #5 0x55dc9676e184 in _start (/workspace/ass_4/Task04/account_buggy.exe+0x1184)
+
+SUMMARY: AddressSanitizer: 800 byte(s) leaked in 1 allocation(s).
+=================================================================
+Forensic Finding:
+1. SeniorAccount destructor (~SeniorAccount) was NEVER called because Account lacks a virtual destructor.
+2. The dynamic array 'history' (100 * sizeof(double) = 800 bytes) allocated on the heap was permanently leaked.
+3. In line 34 (delete a;), the deletion through Account* invoked undefined behavior, skipping the derived destructor.

@@ -1,0 +1,74 @@
+===================================================
+1. Complete the Code: student_complete.exe Output
+===================================================
+192311001 Kavya (19) Salem-636001
+
+===================================================
+2. Swapped Order Compilation Warning (-Wreorder)
+===================================================
+reorder_warning_demo.cpp: In constructor 'Student::Student(const std::string&, int, long long int, const std::string&, int)':
+reorder_warning_demo.cpp:32:13: warning: 'Address Student::home' will be initialized after [-Wreorder]
+   32 |     Address home;
+      |             ^~~~
+reorder_warning_demo.cpp:31:15: warning:   'long long int Student::regNo' [-Wreorder]
+   31 |     long long regNo;
+      |               ^~~~~
+reorder_warning_demo.cpp:38:5: warning:   when initialized here [-Wreorder]
+   38 |     Student(const std::string& n, int a, long long r, const std::string& c, int p)
+      |     ^~~~~~~
+
+===================================================
+3. Predict the Output: engine_vehicle_predict.exe
+===================================================
+Vehicle Engine Car | ~Car ~Engine ~Vehicle 
+
+===================================================
+4. Construction & Destruction Trace: construction_trace.exe
+===================================================
+=======================================================
+ 1. TRACING CONSTRUCTION & DESTRUCTION OF STUDENT     
+=======================================================
+  [Construct] Address(Madurai)
+ [Construct] Person(Kavya)
+  [Construct] Course(DSA01)
+ [Construct] Student(B.Tech)
+ [Destruct]  ~Student(B.Tech)
+  [Destruct]  ~Course(DSA01)
+ [Destruct]  ~Person(Kavya)
+  [Destruct]  ~Address(Madurai)
+
+=======================================================
+ 2. TRACING CONSTRUCTION & DESTRUCTION OF STAFF       
+=======================================================
+  [Construct] Address(Tirunelveli)
+ [Construct] Person(Prof. Raman)
+ [Construct] Staff(ECE)
+ [Destruct]  ~Staff(ECE)
+ [Destruct]  ~Person(Prof. Raman)
+  [Destruct]  ~Address(Tirunelveli)
+
+=======================================================
+ 3. TRACING CONSTRUCTION & DESTRUCTION OF TA          
+=======================================================
+  [Construct] Address(Salem)
+ [Construct] Person(Karthik)
+  [Construct] Course(AI201)
+ [Construct] Student(M.Tech)
+ [Construct] Staff(CSE)
+ [Construct] TeachingAssistant(15 hrs)
+ [Destruct]  ~TeachingAssistant(15 hrs)
+ [Destruct]  ~Staff(CSE)
+ [Destruct]  ~Student(M.Tech)
+  [Destruct]  ~Course(AI201)
+ [Destruct]  ~Person(Karthik)
+  [Destruct]  ~Address(Salem)
+
+=======================================================
+ SIZEOF COMPARISON                                     
+=======================================================
+sizeof(Address):           32 bytes
+sizeof(Course):            32 bytes
+sizeof(Person):            72 bytes
+sizeof(Student):           120 bytes
+sizeof(Staff):             112 bytes
+sizeof(TeachingAssistant): 168 bytes

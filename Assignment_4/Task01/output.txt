@@ -1,0 +1,20 @@
+=======================================================================
+            COLLEGE PAYROLL SYSTEM - POLYMORPHIC PROCESSING            
+=======================================================================
+ID: 101 | Name: Dr. Arulmozhi      | Role: Professor     | Pay: Rs. 135700.00
+ID: 201 | Name: Kannan R.          | Role: Lab Assistant | Pay: Rs. 45440.00
+ID: 301 | Name: Priya Sundaram     | Role: Guest Faculty | Pay: Rs. 54000.00
+ID: 401 | Name: Muthu Kumar        | Role: Admin Staff   | Pay: Rs. 61800.00
+-----------------------------------------------------------------------
+Total Monthly Payroll Expenditure: Rs. 296940.00
+=======================================================================
+
+--- Execution of Alternative Concept (payroll_monolithic_alt.exe) ---
+Size of MonolithicStaff object: 88 bytes
+(Note: Every object wastes memory for fields not relevant to its type!)
+
+ID: 101 | Name: Dr. Arulmozhi      | Role: Professor     | Pay: Rs. 135700.00
+ID: 201 | Name: Kannan R.          | Role: Lab Assistant | Pay: Rs. 45440.00
+ID: 301 | Name: Priya Sundaram     | Role: Guest Faculty | Pay: Rs. 54000.00
+ID: 401 | Name: Muthu Kumar        | Role: Admin Staff   | Pay: Rs. 61800.00
+Total Payroll: Rs. 296940.00

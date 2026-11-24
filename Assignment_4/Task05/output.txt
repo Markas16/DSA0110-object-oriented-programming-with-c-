@@ -1,0 +1,44 @@
+===================================================
+1. Complete the Code Output (cart_complete.exe)
+===================================================
+324.00
+
+===================================================
+2. Four Ways Demonstration Output (cart_four_ways.exe)
+===================================================
+=======================================================
+ FOUR WAYS TO REACH AND MANIPULATE A CART OBJECT       
+=======================================================
+
+[Way A: Directly by Name]
+Cart [Alice] | Items: 2 | Discount: 5.00% | Total: Rs. 76.00
+
+[Way B: Through Pointer with ->]
+Cart [Alice] | Items: 3 | Discount: 5.00% | Total: Rs. 114.00
+
+[Way C: Through Reference]
+Cart [Alice] | Items: 4 | Discount: 5.00% | Total: Rs. 147.25
+
+[Way D: Heap Pointer with new and delete]
+Cart [David] | Items: 2 | Discount: 10.00% | Total: Rs. 175.50
+Heap object successfully deallocated with delete.
+
+===================================================
+3. Array of Pointers Search Output (cart_array_search.exe)
+===================================================
+=======================================================
+ ACTIVE CUSTOMER CARTS - ARRAY OF POINTERS SEARCH      
+=======================================================
+
+--- Current Active Carts in System ---
+Customer: Rohan        | Items: 2 | Discount:  5% | Total: Rs. 346.75
+Customer: Divya        | Items: 2 | Discount: 15% | Total: Rs. 935.00
+Customer: Ganesh       | Items: 2 | Discount: 10% | Total: Rs. 1575.00
+Customer: Meera        | Items: 2 | Discount:  0% | Total: Rs. 240.00
+
+-------------------------------------------------------
+Cart with Highest Total (Located via Pointer Arithmetic):
+Customer: Ganesh       | Items: 2 | Discount: 10% | Total: Rs. 1575.00
+Winner: Ganesh with billing total Rs. 1575.00
+-------------------------------------------------------
+All active customer cart memory safely deallocated.

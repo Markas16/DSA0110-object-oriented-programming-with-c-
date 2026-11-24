@@ -1,0 +1,28 @@
+=======================================================================
+               UNIVERSITY PEOPLE MANAGEMENT SYSTEM                    
+=======================================================================
+ID: 202401 | Name: Aravind S.       | Phone: 9876543210 | Prog: B.Tech CSE | CGPA: 9.15
+-----------------------------------------------------------------------
+ID: 10045 | Name: Dr. Deepa M.     | Phone: 9443210987 | Dept: Computer Science | Salary: Rs. 115000.00
+-----------------------------------------------------------------------
+[TA Record] ID: 202188 | Name: Siddharth V. | Phone: 9123456780
+            Programme: M.Tech AI | CGPA: 8.85
+            Dept: CSE Dept | Stipend: Rs. 25000.00
+            Teaching Load: 12 hrs/week
+-----------------------------------------------------------------------
+[Scholar Record] ID: 201977 | Name: Ananya Ramesh    | Phone: 9012345678 | Prog: Ph.D Computing | CGPA: 9.40
+                 Topic: Quantum Machine Learning Algorithms
+                 Grant: CSIR-JRF Fellowship | Monthly Stipend: Rs. 37000.00 | Tenure: 60 months
+-----------------------------------------------------------------------
+Size of TeachingAssistant: 168 bytes
+
+===================================================
+Execution of diamond_prediction.exe (With Virtual)
+===================================================
+Person Student Staff TA 
+
+===================================================
+Execution of diamond_nonvirtual.exe (Without Virtual)
+===================================================
+Person Student Person Staff TA 
+Size of non-virtual TA: 2 bytes
