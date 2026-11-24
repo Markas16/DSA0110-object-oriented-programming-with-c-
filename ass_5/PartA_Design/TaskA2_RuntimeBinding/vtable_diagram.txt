@@ -1,0 +1,58 @@
+================================================================================
+C++ MEMORY LAYOUT AND VIRTUAL TABLE (VTABLE) ARCHITECTURE
+Task A2.2: Memory Layout and Dynamic Dispatch Tracing for b->total()
+================================================================================
+
+[1] Object Instance in Memory (Heap / Stack)
+--------------------------------------------------------------------------------
+Pointer 'Bill* b' points to an instance of 'OPBill'
+Memory Address: 0x1000
+
++-------------------------------------------------------------+
+| OPBill Object Instance (at address 0x1000)                  |
++-------------------------------------------------------------+
+| offset 0x00: vptr (8 bytes) ---------> Points to OPBill vtable (0x8000)
+| offset 0x08: patientName (32 bytes)                         |
+| offset 0x28: consultationFee (8 bytes) = 500.0              |
+| offset 0x30: diagnosticTestsFee (8 bytes) = 0.0             |
++-------------------------------------------------------------+
+
+[2] Virtual Method Tables (Read-Only Data Segment in Static Memory)
+--------------------------------------------------------------------------------
+
+A. vtable for Bill (Abstract Base Class - Typeinfo & Pure Virtual Slot)
+Address: 0x7000
++---------------+-----------------------------------------------+
+| Slot Index    | Function Pointer / Entry Target               |
++---------------+-----------------------------------------------+
+| slot 0 [vptr] | &Bill::~Bill()                                |
+| slot 1        | __cxa_pure_virtual (triggers runtime abort)   |
++---------------+-----------------------------------------------+
+
+B. vtable for OPBill (OutPatientBill)
+Address: 0x8000
++---------------+-----------------------------------------------+
+| Slot Index    | Function Pointer / Entry Target               |
++---------------+-----------------------------------------------+
+| slot 0 [vptr] | &OPBill::~OPBill()                            |
+| slot 1        | &OPBill::total()                              |
++---------------+-----------------------------------------------+
+
+C. vtable for InPatientBill
+Address: 0x9000
++---------------+-----------------------------------------------+
+| Slot Index    | Function Pointer / Entry Target               |
++---------------+-----------------------------------------------+
+| slot 0 [vptr] | &InPatientBill::~InPatientBill()              |
+| slot 1        | &InPatientBill::total()                       |
++---------------+-----------------------------------------------+
+
+[3] Step-by-Step Dynamic Dispatch Execution of 'b->total()'
+--------------------------------------------------------------------------------
+1. Read pointer 'b': Address 0x1000.
+2. Read vptr at b[0]: Offset 0 points to 0x8000 (vtable of OPBill).
+3. Offset to slot 1: Look up index 1 in vtable at (0x8000 + 8) -> &OPBill::total().
+4. Indirect jump: Call function at address &OPBill::total() passing 'this' (0x1000).
+5. Returns 500.0 in register (XMM0).
+Time Complexity: Exactly ONE pointer dereference + ONE indexed array lookup = O(1).
+================================================================================

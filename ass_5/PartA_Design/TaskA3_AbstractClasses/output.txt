@@ -1,0 +1,10 @@
+===================================================================================
+               HOSPITAL INSURANCE & PAYER SETTLEMENT SYSTEM                        
+===================================================================================
+Processing Claim for Patient: Arun Vijay | Total Billed: Rs. 50000.00
+
+Payer: Self-Pay (Direct)      | Billed: Rs. 50000.00 | Covered: Rs.     0.00 | Patient Due: Rs. 50000.00
+Payer: Star Health Gold       | Billed: Rs. 50000.00 | Covered: Rs. 36000.00 | Patient Due: Rs. 14000.00
+Payer: Govt Scheme [AB-PMJAY] | Billed: Rs. 50000.00 | Covered: Rs. 30000.00 | Patient Due: Rs. 20000.00
+Payer: Corporate [Tata Consul | Billed: Rs. 50000.00 | Covered: Rs. 42500.00 | Patient Due: Rs.  7500.00
+===================================================================================

@@ -1,0 +1,29 @@
+=========================================================================================
+           HOSPITAL GROUP PRODUCTION SYSTEM: ENTERPRISE EXTENSION & SANITIZER AUDIT       
+=========================================================================================
+
+--- 1. Processing Active Bills with Existing and New Payers ---
+Bill #5001 | OutPatient         | Patient: Deepak Verma  | Total: Rs.   2000.00
+     [SelfPay                     ] Covered: Rs.     0.00 | Patient Due: Rs.  2000.00
+     [Max Bupa Health             ] Covered: Rs.  1800.00 | Patient Due: Rs.   200.00
+     [Infosys Corporate Wellness  ] Covered: Rs.  2000.00 | Patient Due: Rs.     0.00
+-----------------------------------------------------------------------------------------
+Bill #5002 | InPatient          | Patient: Sunita Rao    | Total: Rs.  89500.00
+     [SelfPay                     ] Covered: Rs.     0.00 | Patient Due: Rs. 89500.00
+     [Max Bupa Health             ] Covered: Rs. 45000.00 | Patient Due: Rs. 44500.00
+     [Infosys Corporate Wellness  ] Covered: Rs. 40000.00 | Patient Due: Rs. 49500.00
+-----------------------------------------------------------------------------------------
+Bill #5003 | TeleConsultation   | Patient: Aakash Nair   | Total: Rs.    950.00 [Session: ZOOM-MED-9941]
+     [SelfPay                     ] Covered: Rs.     0.00 | Patient Due: Rs.   950.00
+     [Max Bupa Health             ] Covered: Rs.   855.00 | Patient Due: Rs.    95.00
+     [Infosys Corporate Wellness  ] Covered: Rs.   950.00 | Patient Due: Rs.     0.00
+-----------------------------------------------------------------------------------------
+
+--- 2. Stress Testing Exceptions & Memory Safety under AddressSanitizer ---
+Attempting to create corrupt TeleConsultationBill with negative charges...
+[EXPECTED AUDIT CATCH]: BillingError: Negative monetary charge rejected for [TeleConsultation]: Rs. -500.000000
+[VERIFIED]: Corrupted object was destroyed during stack unwind without any heap leak!
+
+=========================================================================================
+Hospital Group Billing batch completed successfully with zero memory leaks.
+=========================================================================================

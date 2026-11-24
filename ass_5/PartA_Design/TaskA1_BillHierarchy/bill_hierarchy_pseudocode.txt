@@ -1,0 +1,48 @@
+================================================================================
+SIMATS Engineering - Standard for Algorithmic Pseudocode
+Module: Hospital Billing System - Daily Total Ledger Processing
+Task A1.3: Compute Day's Total for Heterogeneous Bill Collection
+================================================================================
+
+ALGORITHM ComputeDailyHospitalTotal(billCollection: ARRAY OF POINTER TO Bill, collectionSize: INTEGER) -> REAL
+    INPUT: 
+        billCollection: Array of base-class pointers pointing polymorphically to OutPatient, InPatient, DayCare, and Emergency bills
+        collectionSize: Number of active bill records in the array
+    OUTPUT: 
+        grandTotal: Cumulative financial total of all processed hospital bills
+
+    grandTotal <- 0.0
+    validBillCount <- 0
+
+    // Defensive precondition check
+    IF billCollection = NULL OR collectionSize <= 0 THEN
+        OUTPUT "Error: Empty or invalid bill registry."
+        RETURN 0.0
+    ENDIF
+
+    OUTPUT "========================================================================"
+    OUTPUT "                DAILY HOSPITAL BILLING RECONCILIATION                   "
+    OUTPUT "========================================================================"
+
+    FOR index <- 0 TO collectionSize - 1 STEP 1 DO
+        currentBillPtr <- billCollection[index]
+
+        IF currentBillPtr != NULL THEN
+            // Dynamic dispatch / Runtime Polymorphism invokes overridden total() and print()
+            currentBillPtr.print()
+            billAmount <- currentBillPtr.total()
+
+            grandTotal <- grandTotal + billAmount
+            validBillCount <- validBillCount + 1
+        ELSE
+            OUTPUT "[WARNING] Null bill entry encountered at index: " + TO_STRING(index)
+        ENDIF
+    ENDFOR
+
+    OUTPUT "------------------------------------------------------------------------"
+    OUTPUT "Reconciled Total Bills Processed : " + TO_STRING(validBillCount)
+    OUTPUT "Grand Financial Realization      : Rs. " + FORMAT_CURRENCY(grandTotal)
+    OUTPUT "========================================================================"
+
+    RETURN grandTotal
+END ALGORITHM

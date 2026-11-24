@@ -1,0 +1,39 @@
+=========================================================================================
+ TASK B3.1 & B3.2: PERFORMANCE BENCHMARK (VIRTUAL vs SWITCH vs VARIANT) [-O2 OPTIMIZED]  
+=========================================================================================
+
+--- B3.1: Validating Correctness on Small Dataset (10 Bills) ---
+  Virtual Function 10-Bill Total : Rs. 160250.00
+  Switch Statement 10-Bill Total : Rs. 160250.00
+  [VERIFICATION SUCCESS] Both calculation approaches produce IDENTICAL results!
+
+-----------------------------------------------------------------------------------------
+Dataset Size   Virtual Func (ms)     Switch Stmt (ms)    std::visit (ms)     Agree?
+-----------------------------------------------------------------------------------------
+1000           0.0041                0.0022              0.0029              YES
+1000000        3.8210                2.1405              2.5840              YES
+10000000       36.2410               19.7820             24.5100             YES
+-----------------------------------------------------------------------------------------
+Memory Footprint Analysis:
+  sizeof(SBill) monolithic struct : 48 bytes
+  sizeof(BillVariant) std::variant: 32 bytes
+  sizeof(VOutPatient) derived obj : 24 bytes (+ 8-byte ptr in array)
+  sizeof(VInPatient) derived obj  : 32 bytes (+ 8-byte ptr in array)
+=========================================================================================
+
+=========================================================================================
+ TASK B3.3: VALIDATION BENCHMARK: EXCEPTIONS vs RETURN CODES (1,000,000 BILLS) [-O2]     
+=========================================================================================
+
+-----------------------------------------------------------------------------------------
+Error Rate     Return Codes Time (ms)      Exceptions Time (ms)        Speed Ratio (Ex / Code)
+-----------------------------------------------------------------------------------------
+0%             1.4210                      1.1350                      0.80x
+1%             1.4890                      2.7820                      1.87x
+50%            1.7820                      78.4120                     44.00x
+-----------------------------------------------------------------------------------------
+Key Finding:
+  - At 0% error rate: Exceptions exhibit near parity or slight lead due to zero-cost DWARF tables.
+  - At 1% error rate: Minimal acceptable overhead for critical error logging and stack unwind.
+  - At 50% error rate: Exceptions are significantly slower due to OS unwinding metadata lookups.
+=========================================================================================

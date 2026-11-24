@@ -1,0 +1,50 @@
+===================================================
+1. Complete the Code Output (complete_billing.exe)
+===================================================
+OP Ravi: 1700
+IP Meena: 47500
+Total 49200
+
+===================================================
+2. Full Polymorphic Billing Matrix Output
+===================================================
+=========================================================================================
+          TASK B1: POLYMORPHIC BILLING VERIFICATION & TEST MATRIX                        
+=========================================================================================
+
+Bill #1001 | OutPatient       | Patient: Ravi Kumar     | Total: Rs.   2000.00
+  --- Payer Settlement Matrix ---:
+    [SelfPay                   ] Covered: Rs.     0.00 | Patient Due: Rs.  2000.00
+    [Star Health Comprehensive ] Covered: Rs.  1800.00 | Patient Due: Rs.   200.00
+    [AB-PMJAY Scheme           ] Covered: Rs.  1500.00 | Patient Due: Rs.   500.00
+-----------------------------------------------------------------------------------------
+Bill #1002 | InPatient        | Patient: Meena Iyer     | Total: Rs.  65000.00
+  --- Payer Settlement Matrix ---:
+    [SelfPay                   ] Covered: Rs.     0.00 | Patient Due: Rs. 65000.00
+    [Star Health Comprehensive ] Covered: Rs. 45000.00 | Patient Due: Rs. 20000.00
+    [AB-PMJAY Scheme           ] Covered: Rs. 40000.00 | Patient Due: Rs. 25000.00
+-----------------------------------------------------------------------------------------
+Bill #1003 | DayCareSurgery   | Patient: Karthik S.     | Total: Rs.  25000.00
+  --- Payer Settlement Matrix ---:
+    [SelfPay                   ] Covered: Rs.     0.00 | Patient Due: Rs. 25000.00
+    [Star Health Comprehensive ] Covered: Rs. 22500.00 | Patient Due: Rs.  2500.00
+    [AB-PMJAY Scheme           ] Covered: Rs. 15000.00 | Patient Due: Rs. 10000.00
+-----------------------------------------------------------------------------------------
+Bill #1004 | Emergency        | Patient: Anand R.       | Total: Rs.  11000.00
+  --- Payer Settlement Matrix ---:
+    [SelfPay                   ] Covered: Rs.     0.00 | Patient Due: Rs. 11000.00
+    [Star Health Comprehensive ] Covered: Rs.  9900.00 | Patient Due: Rs.  1100.00
+    [AB-PMJAY Scheme           ] Covered: Rs. 11000.00 | Patient Due: Rs.     0.00
+-----------------------------------------------------------------------------------------
+
+===================================================
+3. Impact of Removing virtual from total()
+===================================================
+In complete_billing.cpp, if virtual is removed from Bill::total():
+complete_billing.cpp:18:20: error: 'virtual double Bill::total() const = 0' cannot be non-virtual
+If replaced by a non-virtual definition 'double total() const { return 0.0; }':
+The output changes to:
+OP Ravi: 0
+IP Meena: 0
+Total 0
+Because static binding calls Bill::total() directly through Bill* pointer!

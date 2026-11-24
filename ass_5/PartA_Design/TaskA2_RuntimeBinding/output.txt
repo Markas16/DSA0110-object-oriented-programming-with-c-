@@ -1,0 +1,6 @@
+--- 1. Execution with Virtual Destructor ---
+500 ~OPBill ~Bill 
+
+--- 2. Output if virtual removed from ~Bill ---
+500 ~Bill 
+(Notice: ~OPBill is skipped! Leaks any resources allocated in derived class.)

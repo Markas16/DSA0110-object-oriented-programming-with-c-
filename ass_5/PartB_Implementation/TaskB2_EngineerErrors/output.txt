@@ -1,0 +1,55 @@
+===================================================
+1. Complete the Code Output (complete_claims.exe)
+===================================================
+approved 40000
+audit: exceeds cover
+claim rejected: exceeds cover
+error: negative amount
+
+===================================================
+2. Predict the Output: predict_validate_process.exe
+===================================================
+ok done caught negative [log too large] caught too large 
+
+===================================================
+3. Stress Testing Engineered Errors Output
+===================================================
+=================================================================================
+          TASK B2: ADVERSARIAL STRESS TESTING OF EXCEPTION SUBSYSTEM             
+=================================================================================
+
+[TEST 1: Negative Charge Injection]
+  [RAII-INIT] Opened scope: NegativeChargeCheck
+  [RAII-CLEANUP] Destroyed scope: NegativeChargeCheck (Resources cleanly released!)
+  [CAUGHT EXPECTED]: BillingError: Negative monetary charge rejected for [DiagnosticTests]: Rs. -1200.000000
+
+[TEST 2: Claim Exceeding Policy Cover]
+  [RAII-INIT] Opened scope: ClaimCoverAudit
+  [RAII-CLEANUP] Destroyed scope: ClaimCoverAudit (Resources cleanly released!)
+  [CAUGHT EXPECTED]: ClaimError: Claim amount Rs. 75000.000000 exceeds policy cover limit of Rs. 50000.000000
+
+[TEST 3: Unknown Surgical Package Code]
+  [RAII-INIT] Opened scope: PackageCodeLookup
+  [RAII-CLEANUP] Destroyed scope: PackageCodeLookup (Resources cleanly released!)
+  [CAUGHT EXPECTED]: ClaimError: Unrecognized surgical package code: [INVALID-PKG-99]
+
+[TEST 4: Non-Numeric Text Input Parsing]
+  [RAII-INIT] Opened scope: NumericParser
+  [RAII-CLEANUP] Destroyed scope: NumericParser (Resources cleanly released!)
+  [CAUGHT EXPECTED std::invalid_argument]: Corrupted input (stod)
+
+[TEST 5: Forced std::bad_alloc Memory Exhaustion]
+  [RAII-INIT] Opened scope: MemoryAllocationProbe
+  -> Attempting to allocate 100 Terabytes (size_t(-1))...
+  [RAII-CLEANUP] Destroyed scope: MemoryAllocationProbe (Resources cleanly released!)
+  [CAUGHT EXPECTED std::bad_alloc]: System out of heap memory (std::bad_alloc)
+
+[TEST 6: Top-Level catch(...) Fault Tolerance Boundary]
+  [RAII-INIT] Opened scope: TopLevelBoundary
+  [RAII-CLEANUP] Destroyed scope: TopLevelBoundary (Resources cleanly released!)
+  [CRITICAL RECOVERY]: Non-standard exception caught by catch(...)!
+  Hospital service remains operational. Zero crash occurred!
+
+=================================================================================
+All engineered error scenarios passed. Program completed safely without abort.
+=================================================================================
